@@ -4,21 +4,14 @@ def parallel_processing(n, m, data):
     output = []
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
-    laiks = 0
-    s = 0
-    k = 0
-    lar = []
-    
-    for job in range(m):
-        output.append((k, laiks))
-        lar.append(laiks)
-        k += 1
-        if len(lar) >= n:
-            if len(lar) > n:
-                s += 1
-            laiks = lar[len(lar)-n] + runtimes[s]
-
-    return output
+    trd = [(0, f) for f in range(n)] 
+    for i in range (m):
+        d = data[i]
+        min = min(trd)[1]  
+        output.append((min, trd[min][0]))   
+        trd[min] = (trd[min][0] + d, min) 
+        
+    return output 
 
 def main():
     # TODO: create input from keyboard

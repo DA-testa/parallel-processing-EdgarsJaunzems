@@ -4,12 +4,12 @@ def parallel_processing(n, m, data):
     output = [] 
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs     
-    thread = [(0, k) for k in range(n)] 
+    trd = [(0, k) for k in range(n)] 
     for t in range (m):
-        tsk = data[t]
-        nxt = min(thread)[1]  
-        output.append((nxt, thread[nxt][0]))   
-        thread[nxt] = (thread[nxt][0] + tsk, nxt) 
+        d = data[t]
+        mini = min(trd)[1]  
+        output.append((mini, trd[mini][0]))   
+        trd[mini] = (trd[mini][0] + d, mini) 
         
     return output 
 
